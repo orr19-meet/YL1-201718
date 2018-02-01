@@ -14,29 +14,32 @@ class Ball(Turtle):
 	def move(self,screen_width,screen_height):
 		current_x=self.xcor()
 		new_x=current_x+self.dx
-		current_y=self.xcor()
+		current_y=self.ycor()
 		new_y=current_y+self.dy
 
 		#qualities to check
 		right_side_ball=new_x+self.r
 		left_side_ball=new_x-self.r
 		up_side_ball=new_y+self.r
-		down_side_ball=new_x-self.r
+		down_side_ball=new_y-self.r
 		#above is for you to check
-		
-		new_dx =self.dx
-		new_dy = self.dy
+	
 
 		self.goto(new_x,new_y)
+		
 		if (right_side_ball>=screen_width):
-			new_dx= -self.dx
-		if (left_side_ball<=0):
-			new_dx= -self.dx
+			self.dx= -self.dx
+			self.clear()
+		if (left_side_ball<=-screen_width):
+			self.dx= -self.dx
+			self.clear()
 		if (up_side_ball>=screen_height):
-			new_dy= -self.dy
-		if (down_side_ball<=0):
-			new_dy= -self.dy
-
+			self.dy= -self.dy
+			self.clear()
+		if (down_side_ball<=-screen_height):
+			self.dy= -self.dy
+			self.clear()
+		
 
 #ball = Ball(50,50,5,0,80,"blue")
 #ball.move(10,10)
